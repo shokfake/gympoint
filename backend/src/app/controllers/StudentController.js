@@ -52,7 +52,7 @@ class StudentController {
 
 		const student = await Student.findByPk(id);
 
-		if (email !== student.email && email !== undefined) {
+		if (email !== student.email) {
 			const studentExists = await Student.findOne({ where: { email } });
 
 			if (studentExists) {
@@ -60,14 +60,16 @@ class StudentController {
 			}
 		}
 
-		const updatedStudent = await student.update(req.body);
+		const { name, idade, altura, email: newEmail } = await student.update(
+			req.body
+		);
 
 		return res.json({
 			id,
-			name: updatedStudent.name,
-			email: updatedStudent.email,
-			idade: updatedStudent.idade,
-			altura: updatedStudent.altura,
+			name,
+			email: newEmail,
+			idade,
+			altura,
 		});
 	}
 }
