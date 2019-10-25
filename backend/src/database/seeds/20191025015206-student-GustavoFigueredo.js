@@ -1,14 +1,13 @@
-const bcrypt = require('bcryptjs');
-
 module.exports = {
 	up: QueryInterface => {
 		return QueryInterface.bulkInsert(
-			'users',
+			'students',
 			[
 				{
-					name: 'Administrador',
-					email: 'admin@gympoint.com',
-					password_hash: bcrypt.hashSync('123456', 8),
+					name: 'Gustavo da Cruz Figueredo',
+					email: 'gustavocf@gmail.com',
+					idade: 11,
+					altura: 1.52,
 					created_at: new Date(),
 					updated_at: new Date(),
 				},

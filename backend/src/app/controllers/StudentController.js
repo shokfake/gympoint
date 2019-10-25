@@ -24,7 +24,9 @@ class StudentController {
 			return res.status(400).json({ error: 'Student already exists' });
 		}
 
-		const { id, name, email, idade, altura } = await Student.create(req.body);
+		const { name, email, altura, idade } = req.body;
+
+		const { id } = await Student.create({ name, email, altura, idade });
 
 		return res.json({
 			id,
@@ -47,10 +49,14 @@ class StudentController {
 			return res.status(400).json({ error: 'Validation fails' });
 		}
 
-		const { email } = req.body;
+		const { name, email, idade, altura } = req.body;
 		const { id } = req.params;
 
 		const student = await Student.findByPk(id);
+
+		if (!student) {
+			return res.status(400).json({ erro: 'Student does not exist' });
+		}
 
 		if (email && email !== student.email) {
 			const studentExists = await Student.findOne({ where: { email } });
@@ -60,16 +66,14 @@ class StudentController {
 			}
 		}
 
-		const { name, idade, altura, email: newEmail } = await student.update(
-			req.body
-		);
+		const updatedStudent = await student.update({ name, email, idade, altura });
 
 		return res.json({
 			id,
-			name,
-			email: newEmail,
-			idade,
-			altura,
+			name: updatedStudent.name,
+			email: updatedStudent.email,
+			idade: updatedStudent.idade,
+			altura: updatedStudent.altura,
 		});
 	}
 }
