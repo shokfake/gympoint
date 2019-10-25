@@ -54,7 +54,6 @@ class PlanController {
 
 		const { planId } = req.params;
 
-		/* const plan = await Plan.findByPk(planId); */
 		const plan = await Plan.findByPk(planId);
 
 		if (!plan) {
