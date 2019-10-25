@@ -81,14 +81,7 @@ class EnrollmentController {
 
 		return res.json(
 			await Enrollment.findByPk(id, {
-				attributes: [
-					'id',
-					'start_date',
-					'end_date',
-					'student_id',
-					'plan_id',
-					'price',
-				],
+				attributes: ['id', 'start_date', 'end_date', 'price'],
 				include: [
 					{
 						model: Student,
