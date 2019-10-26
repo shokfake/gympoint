@@ -100,6 +100,7 @@ class EnrollmentController {
 
 	async index(req, res) {
 		const enrolments = await Enrollment.findAll({
+			// order: ['start_date'],
 			attributes: ['id', 'start_date', 'end_date', 'price'],
 			include: [
 				{
@@ -196,6 +197,20 @@ class EnrollmentController {
 		});
 
 		return res.json(updated);
+	}
+
+	async delete(req, res) {
+		const { enrollmentId } = req.params;
+
+		const enrrolment = await Enrollment.findByPk(enrollmentId);
+
+		if (!enrrolment) {
+			return res.status(400).json({ error: 'Enrrolment does not exist' });
+		}
+
+		enrrolment.destroy();
+
+		return res.send();
 	}
 }
 
