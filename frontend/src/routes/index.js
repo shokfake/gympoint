@@ -4,11 +4,12 @@ import { Switch } from 'react-router-dom';
 import Route from './Route';
 
 // Pages
+import SignIn from '~/pages/SignIn';
 
 export default function Routes() {
 	return (
 		<Switch>
-			<Route path="/" exact />
+			<Route path="/" exact component={SignIn} />
 		</Switch>
 	);
 }
