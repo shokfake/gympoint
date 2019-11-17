@@ -27,7 +27,7 @@ export default function SignIn() {
 			<h1>GYMPOINT</h1>
 			<Form schema={schema} onSubmit={handleSubmit}>
 				<span>SEU E-MAIL</span>
-				<Input name="email" type="emial" placeholder="exemplo@email.com" />
+				<Input name="email" type="email" placeholder="exemplo@email.com" />
 				<span>SUA SENHA</span>
 				<Input name="password" type="password" placeholder="*************" />
 
