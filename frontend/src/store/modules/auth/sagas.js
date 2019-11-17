@@ -17,7 +17,7 @@ export function* signIn({ payload }) {
 
 	yield put(signInSuccess(token, user));
 
-	history.push('/dashboard');
+	history.push('/students');
 }
 
 export function setToken({ payload }) {
