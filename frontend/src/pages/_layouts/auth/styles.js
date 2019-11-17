@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import colors from '~/styles/colors';
 
 export const Wrapper = styled.div`
 	height: 100%;
-	background: #ee4d64;
+	background: ${colors.primary};
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -18,7 +19,7 @@ export const Content = styled.div`
 
 	h1 {
 		margin-top: 10px;
-		color: #ee4d64;
+		color: ${colors.primary};
 		font-size: 30px;
 		font-weight: bold;
 	}
@@ -29,21 +30,12 @@ export const Content = styled.div`
 		margin-top: 30px;
 
 		input {
-			font-size: 16px;
-			height: 45px;
-			border-radius: 4px;
-			border: 1px solid #dddddd;
-			background: #fff;
 			padding: 0 15px;
 			margin-bottom: 20px;
-
-			&::placeholder {
-				color: #999999;
-			}
 		}
 
 		span {
-			color: #444444;
+			color: #444;
 			font-weight: bold;
 			font-size: 14px;
 			text-align: left;
@@ -52,7 +44,7 @@ export const Content = styled.div`
 
 		button {
 			height: 45px;
-			background: #ee4d64;
+			background: ${colors.primary};
 			border: 0;
 			border-radius: 4px;
 			color: #fff;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import colors from '~/styles/colors';
 
 export const Container = styled.div`
 	display: flex;
@@ -18,7 +19,7 @@ export const Container = styled.div`
 
 		button {
 			margin-right: 16px;
-			background: #ee4d64;
+			background: ${colors.primary};
 			padding: 10px 16px;
 
 			svg {
@@ -80,7 +81,7 @@ export const ListStudents = styled.div`
 				}
 
 				a + a {
-					color: #de3b3b;
+					color: ${colors.primary};
 				}
 			}
 		}
