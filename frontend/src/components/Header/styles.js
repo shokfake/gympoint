@@ -68,5 +68,9 @@ export const Navigation = styled.div`
 		font-size: 15px;
 		font-weight: bold;
 		color: #999999;
+
+		&.active {
+			color: #444444;
+		}
 	}
 `;

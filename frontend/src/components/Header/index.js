@@ -1,10 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Link, NavLink } from 'react-router-dom';
 
 import logo from '~/assets/logo.svg';
 import { Container, Content, Profile, Logo, Navigation } from './styles';
 
-export default function header() {
+export default function Header() {
+	const profile = useSelector(state => state.user.profile);
+
 	return (
 		<Container>
 			<Content>
@@ -14,16 +17,16 @@ export default function header() {
 						<Link to="/">GYMPOINT</Link>
 					</Logo>
 					<Navigation>
-						<Link to="/">ALUNOS</Link>
-						<Link to="/">PLANOS</Link>
-						<Link to="/">MATRÍCULAS</Link>
-						<Link to="/">PEDIDOS DE AUXÍLIO</Link>
+						<NavLink to="/students">ALUNOS</NavLink>
+						<NavLink to="/plans">PLANOS</NavLink>
+						<NavLink to="/enrollments">MATRÍCULAS</NavLink>
+						<NavLink to="/helpOrders">PEDIDOS DE AUXÍLIO</NavLink>
 					</Navigation>
 				</nav>
 
 				<aside>
 					<Profile>
-						<strong>Diego Fernandes</strong>
+						<strong>{profile.name}</strong>
 						<button type="button">sair do sistema</button>
 					</Profile>
 				</aside>
