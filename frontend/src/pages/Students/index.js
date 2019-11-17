@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { MdAdd, MdSearch } from 'react-icons/md';
-import { Input } from '@rocketseat/unform';
+
+import Input from '~/components/Input';
+import Button from '~/components/Button';
 
 import api from '~/services/api';
+import history from '~/services/history';
 import { Container, Search, ListStudents } from './styles';
 
 export default function Students() {
@@ -25,10 +28,15 @@ export default function Students() {
 			<header>
 				<h1>Gerenciando alunos</h1>
 				<div>
-					<button type="button">
+					<Button
+						type="button"
+						onClick={() => {
+							history.push('/students/register');
+						}}
+					>
 						<MdAdd color="#fff" size={20} />
 						CADASTRAR
-					</button>
+					</Button>
 					<Search>
 						<MdSearch color="#999" size={16} />
 						<Input name="aluno" type="text" placeholder="Buscar aluno" />
@@ -47,13 +55,19 @@ export default function Students() {
 					</thead>
 					<tbody>
 						{students.map(student => (
-							<tr>
+							<tr key={student.id}>
 								<td>{student.name}</td>
 								<td>{student.email}</td>
 								<td>{student.idade}</td>
 								<td>
 									<div>
-										<Link to="/">editar</Link>
+										<Link
+											to={{
+												pathname: `/students/edit/${student.name}`,
+											}}
+										>
+											editar
+										</Link>
 										<Link to="/">apagar</Link>
 									</div>
 								</td>

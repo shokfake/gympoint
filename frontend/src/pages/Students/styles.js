@@ -18,19 +18,8 @@ export const Container = styled.div`
 
 		button {
 			margin-right: 16px;
-			height: 36px;
-			border: 0;
 			background: #ee4d64;
-			border-radius: 4px;
-			color: #fff;
 			padding: 10px 16px;
-
-			font-size: 14px;
-			font-weight: bold;
-
-			display: flex;
-			justify-content: center;
-			align-items: center;
 
 			svg {
 				margin-right: 8px;
@@ -42,8 +31,6 @@ export const Container = styled.div`
 export const Search = styled.div`
 	input {
 		height: 36px;
-		border: 1px solid #dddddd;
-		border-radius: 4px;
 		padding-left: 32px;
 		padding-right: 12px;
 		margin-left: 8px;
