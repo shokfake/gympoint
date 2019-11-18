@@ -19,12 +19,6 @@ export const Container = styled.div`
 
 		button {
 			margin-right: 16px;
-			background: ${colors.primary};
-			padding: 10px 16px;
-
-			svg {
-				margin-right: 8px;
-			}
 		}
 	}
 `;

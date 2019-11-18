@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { MdAdd, MdSearch } from 'react-icons/md';
+import { MdSearch } from 'react-icons/md';
 
 import Input from '~/components/Input';
-import Button from '~/components/Button';
+import ButtonRegister from '~/components/ButtonRegister';
 
 import api from '~/services/api';
 import history from '~/services/history';
@@ -28,15 +28,12 @@ export default function Students() {
 			<header>
 				<h1>Gerenciando alunos</h1>
 				<div>
-					<Button
+					<ButtonRegister
 						type="button"
 						onClick={() => {
 							history.push('/students/register');
 						}}
-					>
-						<MdAdd color="#fff" size={20} />
-						CADASTRAR
-					</Button>
+					/>
 					<Search>
 						<MdSearch color="#999" size={16} />
 						<Input name="aluno" type="text" placeholder="Buscar aluno" />

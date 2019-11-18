@@ -1,13 +1,12 @@
 import React from 'react';
 import * as Yup from 'yup';
 
-import { MdDone, MdChevronLeft } from 'react-icons/md';
-
 import api from '~/services/api';
 import history from '~/services/history';
 
 import Input from '~/components/Input';
-import Button from '~/components/Button';
+import ButtonBack from '~/components/ButtonBack';
+import ButtonSave from '~/components/ButtonSave';
 import Form from '~/components/DefaultForm';
 
 import { Container } from './styles';
@@ -43,14 +42,8 @@ export default function Register() {
 				<h1>Cadastro de aluno</h1>
 
 				<div>
-					<Button type="button">
-						<MdChevronLeft color="#fff" size={20} />
-						VOLTAR
-					</Button>
-					<Button type="submit" form="student-form">
-						<MdDone color="#fff" size={20} />
-						SALVAR
-					</Button>
+					<ButtonBack type="button" />
+					<ButtonSave type="submit" form="student-form" />
 				</div>
 			</header>
 
