@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import * as Yup from 'yup';
 
 import api from '~/services/api';
+import history from '~/services/history';
 
 import Input from '~/components/Input';
 import ButtonBack from '~/components/ButtonBack';
@@ -9,6 +11,19 @@ import ButtonSave from '~/components/ButtonSave';
 import Form from '~/components/DefaultForm';
 
 import { Container } from './styles';
+
+const schema = Yup.object().shape({
+	name: Yup.string().required('O nome é obrigatório'),
+	email: Yup.string()
+		.email('Insira um e-mail válido')
+		.required('O e-email é obrigatório'),
+	idade: Yup.number()
+		.required('A idade é obrigatória')
+		.typeError('Insira uma idade válida'),
+	altura: Yup.number()
+		.required('A altura é obrigatória')
+		.typeError('Insira uma idade válida'),
+});
 
 export default function Edit({ match }) {
 	const [student, setStudent] = useState({});
@@ -20,12 +35,12 @@ export default function Edit({ match }) {
 				params: { q: studentName },
 			});
 
-			const { name, email, id, idade, altura } = response.data.response[0];
+			const { id, name, email, idade, altura } = response.data.response[0];
 
 			setStudent({
+				id,
 				name,
 				email,
-				id,
 				idade,
 				altura,
 			});
@@ -34,18 +49,34 @@ export default function Edit({ match }) {
 		handleStudent();
 	}, [studentName]);
 
+	async function hanldeSubmit({ name, email, idade, altura }) {
+		await api.put(`students/${student.id}`, {
+			name,
+			email,
+			idade,
+			altura,
+		});
+
+		history.goBack();
+	}
+
 	return (
 		<Container>
 			<header>
-				<h1>Cadastro de aluno</h1>
+				<h1>Edição de aluno</h1>
 
 				<div>
 					<ButtonBack type="button" />
-					<ButtonSave type="button" />
+					<ButtonSave type="submit" form="student-form-edit" />
 				</div>
 			</header>
 
-			<Form initialData={student}>
+			<Form
+				schema={schema}
+				initialData={student}
+				onSubmit={hanldeSubmit}
+				id="student-form-edit"
+			>
 				<span>NOME COMPLETO</span>
 				<Input name="name" type="text" placeholder="Nome completo do aluno" />
 				<span>ENDEREÇO DE E-MAIL</span>
