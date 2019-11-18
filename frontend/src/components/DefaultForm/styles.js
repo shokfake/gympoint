@@ -5,6 +5,7 @@ import { Form } from '@rocketseat/unform';
 export const DefaultForm = styled(Form)`
 	display: flex;
 	flex-direction: column;
+	width: 900px;
 	padding: 30px;
 	background: #fff;
 	border-radius: 4px;

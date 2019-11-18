@@ -25,6 +25,7 @@ export const Content = styled.div`
 export const Profile = styled.div`
 	display: flex;
 	flex-direction: column;
+	align-items: flex-end;
 
 	strong {
 		font-size: 14px;
