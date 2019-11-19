@@ -26,7 +26,8 @@ const schema = Yup.object().shape({
 });
 
 export default function Register() {
-	async function hanldeSubmit({ name, email, idade, altura }) {
+	async function hanldeSubmit(data, { resetForm }) {
+		const { name, email, idade, altura } = data;
 		try {
 			await api.post('students', {
 				name,
@@ -38,6 +39,7 @@ export default function Register() {
 			history.push('/students');
 			toast.success('Aluno cadastrado com sucesso!');
 		} catch (error) {
+			resetForm();
 			toast.error('Aluno já cadastrado');
 		}
 	}
