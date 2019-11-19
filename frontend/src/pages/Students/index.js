@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
@@ -13,6 +13,7 @@ import { Container, Search, ListStudents } from './styles';
 
 export default function Students() {
 	const [students, setStudents] = useState([]);
+	const [search, setSearch] = useState('');
 
 	useEffect(() => {
 		async function handleStudents() {
@@ -43,6 +44,24 @@ export default function Students() {
 		}
 	}
 
+	useMemo(() => {
+		async function getStudent() {
+			const response = await api.get('students', {
+				params: {
+					q: search,
+				},
+			});
+
+			setStudents(response.data.response);
+		}
+
+		getStudent();
+	}, [search]);
+
+	async function handleSearchStudent(e) {
+		setSearch(e.target.value);
+	}
+
 	return (
 		<Container>
 			<header>
@@ -56,7 +75,12 @@ export default function Students() {
 					/>
 					<Search>
 						<MdSearch color="#999" size={16} />
-						<Input name="aluno" type="text" placeholder="Buscar aluno" />
+						<Input
+							onChange={handleSearchStudent}
+							name="aluno"
+							type="text"
+							placeholder="Buscar aluno"
+						/>
 					</Search>
 				</div>
 			</header>
