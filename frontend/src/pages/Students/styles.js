@@ -4,12 +4,13 @@ import colors from '~/styles/colors';
 export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	padding: 34px 120px;
 
 	header {
 		display: flex;
-		flex: 1;
 		align-items: center;
+		width: 1200px;
 		justify-content: space-between;
 	}
 
@@ -42,7 +43,7 @@ export const Search = styled.div`
 export const ListStudents = styled.div`
 	table {
 		margin-top: 20px;
-		width: 100%;
+		width: 1200px;
 		background: #fff;
 		padding: 30px 30px 0px 30px;
 
