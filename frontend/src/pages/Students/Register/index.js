@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 
 import api from '~/services/api';
@@ -34,6 +35,7 @@ export default function Register() {
 		});
 
 		history.push('/students');
+		toast.success('Aluno cadastrado com sucesso!');
 	}
 
 	return (

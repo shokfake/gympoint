@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 
@@ -58,6 +59,7 @@ export default function Edit({ match }) {
 		});
 
 		history.goBack();
+		toast.success('Aluno editado com sucesso!');
 	}
 
 	return (
