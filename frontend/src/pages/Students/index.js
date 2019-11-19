@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
 import { MdSearch } from 'react-icons/md';
@@ -22,6 +23,25 @@ export default function Students() {
 
 		handleStudents();
 	}, []);
+
+	async function handleDelete({ name, id }) {
+		const confirm = window.confirm(`Deseja mesmo apagar o aluno, ${name} ?`);
+
+		if (!confirm) {
+			toast.error('Aluno não apagado');
+			return;
+		}
+
+		try {
+			await api.delete(`students/${id}`);
+			const response = await api.get('students');
+			setStudents(response.data.response);
+
+			toast.success('Aluno apagado com sucesso!');
+		} catch (error) {
+			toast.error('Aluno tem uma matrícula ativa');
+		}
+	}
 
 	return (
 		<Container>
@@ -65,7 +85,9 @@ export default function Students() {
 										>
 											editar
 										</Link>
-										<Link to="/">apagar</Link>
+										<button type="button" onClick={() => handleDelete(student)}>
+											apagar
+										</button>
 									</div>
 								</td>
 							</tr>

@@ -69,12 +69,16 @@ export const ListStudents = styled.div`
 				display: flex;
 				justify-content: flex-end;
 
-				> a {
-					margin-left: 23px;
-					color: #4d85ee;
+				a {
+					margin-right: 23px;
+					color: ${colors.info};
 				}
 
-				a + a {
+				button {
+					font-size: 16px;
+					margin-right: 0;
+					background: none;
+					border: 0;
 					color: ${colors.primary};
 				}
 			}
