@@ -42,6 +42,7 @@ module.exports = {
     "react-hooks/rules-of-hooks": "error",
 		"react-hooks/exhaustive-deps": "warn",
 		'react/jsx-props-no-spreading': 'off',
+		'jsx-a11y/control-has-associated-label': 'off',
 		"no-alert": "off"
   },
   settings: {
