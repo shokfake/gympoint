@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Form, Input } from '@rocketseat/unform';
+import { Form } from '@rocketseat/unform';
 import * as Yup from 'yup';
+import Input from '~/components/Input';
 
 import { signInRequest } from '~/store/modules/auth/actions';
 
