@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import colors from '~/styles/colors';
 
 export const Container = styled.div`
 	background: #fff;
@@ -37,7 +38,7 @@ export const Profile = styled.div`
 		border: 0;
 		background: none;
 		font-size: 14px;
-		color: #de3b3b;
+		color: ${colors.primary};
 		text-align: right;
 	}
 `;
@@ -47,7 +48,7 @@ export const Logo = styled.div`
 	align-items: center;
 	margin-right: 30.5px;
 	padding-right: 30.5px;
-	border-right: 1px solid #dddddd;
+	border-right: 1px solid #ddd;
 
 	img {
 		height: 24px;
@@ -56,7 +57,7 @@ export const Logo = styled.div`
 
 	a {
 		font-weight: bold;
-		color: #ee4d64;
+		color: ${colors.primary};
 	}
 `;
 
@@ -68,10 +69,14 @@ export const Navigation = styled.div`
 		margin-right: 20px;
 		font-size: 15px;
 		font-weight: bold;
-		color: #999999;
+		color: #999;
+
+		&:hover {
+			color: ${colors.primary};
+		}
 
 		&.active {
-			color: #444444;
+			color: #444;
 		}
 	}
 `;
