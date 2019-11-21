@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
 import api from '~/services/api';
@@ -10,25 +11,43 @@ import { Container, Contente, PlanTable } from './styles';
 export default function Plans() {
 	const [plans, setPlans] = useState([]);
 
+	async function handlePlans() {
+		const response = await api.get('plans');
+
+		const data = response.data.map(plan => {
+			plan.priceFormated = formatPrice(plan.price);
+			if (plan.duration === 1) {
+				plan.durationFormated = '1 mês';
+			} else {
+				plan.durationFormated = `${plan.duration} meses`;
+			}
+			return plan;
+		});
+
+		setPlans(data);
+	}
+
 	useEffect(() => {
-		async function handlePlans() {
-			const response = await api.get('plans');
-
-			const data = response.data.map(plan => {
-				plan.priceFormated = formatPrice(plan.price);
-				if (plan.duration === 1) {
-					plan.durationFormated = '1 mês';
-				} else {
-					plan.durationFormated = `${plan.duration} meses`;
-				}
-				return plan;
-			});
-
-			setPlans(data);
-		}
-
 		handlePlans();
 	}, []);
+
+	async function handleDelete({ id, title }) {
+		const confirm = window.confirm(`Deseja mesmo apagar o plano, ${title}?`);
+
+		if (!confirm) {
+			toast.error('Plano não apagado');
+			return;
+		}
+
+		try {
+			await api.delete(`plans/${id}`);
+			handlePlans();
+
+			toast.success('Plano apagado com sucesso!');
+		} catch (err) {
+			toast.error('Existe uma matrícula ativa com esse plano!');
+		}
+	}
 
 	return (
 		<Container>
@@ -61,7 +80,9 @@ export default function Plans() {
 										>
 											editar
 										</Link>
-										<button type="button">apagar</button>
+										<button type="button" onClick={() => handleDelete(plan)}>
+											apagar
+										</button>
 									</div>
 								</td>
 							</tr>
