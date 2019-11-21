@@ -54,7 +54,13 @@ export default function Plans() {
 								<td align="center">{plan.priceFormated}</td>
 								<td>
 									<div>
-										<Link to="/">editar</Link>
+										<Link
+											to={{
+												pathname: `/plans/edit/${plan.id}`,
+											}}
+										>
+											editar
+										</Link>
 										<button type="button">apagar</button>
 									</div>
 								</td>

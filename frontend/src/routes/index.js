@@ -7,7 +7,9 @@ import Route from './Route';
 import SignIn from '~/pages/SignIn';
 import Enrollments from '~/pages/Enrollments';
 import HelpOrders from '~/pages/HelpOrders';
+
 import Plans from '~/pages/Plans';
+import PLansEdit from '~/pages/Plans/Edit';
 
 import Students from '~/pages/Students';
 import StudentsRegister from '~/pages/Students/Register';
@@ -22,7 +24,9 @@ export default function Routes() {
 			<Route path="/students/register" component={StudentsRegister} isPrivate />
 			<Route path="/students/edit/:name" component={StudentsEdit} isPrivate />
 
-			<Route path="/plans" component={Plans} isPrivate />
+			<Route path="/plans" exact component={Plans} isPrivate />
+			<Route path="/plans/edit/:id" component={PLansEdit} isPrivate />
+
 			<Route path="/enrollments" component={Enrollments} isPrivate />
 			<Route path="/helpOrders" component={HelpOrders} isPrivate />
 		</Switch>
