@@ -45,8 +45,9 @@ export default function Edit({ match }) {
 		const duration = e.target.value;
 
 		const data = { ...plan };
+		const totalPrice = duration * data.price;
 
-		data.totalPrice = formatPrice(duration * data.price);
+		data.totalPrice = formatPrice(totalPrice || 0);
 
 		setPlan(data);
 	}
@@ -55,8 +56,9 @@ export default function Edit({ match }) {
 		const price = e.target.value;
 
 		const data = { ...plan };
+		const totalPrice = data.duration * price;
 
-		data.totalPrice = formatPrice(data.duration * price);
+		data.totalPrice = formatPrice(totalPrice || 0);
 		setPlan(data);
 	}
 
@@ -78,7 +80,7 @@ export default function Edit({ match }) {
 
 				<div>
 					<ButtonBack type="button" />
-					<ButtonSave type="submit" form="student-form-edit" />
+					<ButtonSave type="submit" form="plan-form" />
 				</div>
 			</header>
 
@@ -86,7 +88,7 @@ export default function Edit({ match }) {
 				schema={schema}
 				initialData={plan}
 				onSubmit={hanldeSubmit}
-				id="student-form-edit"
+				id="plan-form"
 			>
 				<span>TÍTULO DO PLANO</span>
 				<Input name="title" type="text" />

@@ -7,7 +7,7 @@ export const Container = styled.div`
 	padding-top: 34px;
 `;
 
-export const Contente = styled.div`
+export const Content = styled.div`
 	width: 900px;
 	display: flex;
 	flex-direction: column;

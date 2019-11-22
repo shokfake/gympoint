@@ -3,10 +3,11 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
 import api from '~/services/api';
+import history from '~/services/history';
 import { formatPrice } from '~/util/format';
 
 import ButtonRegister from '~/components/ButtonRegister';
-import { Container, Contente, PlanTable } from './styles';
+import { Container, Content, PlanTable } from './styles';
 
 export default function Plans() {
 	const [plans, setPlans] = useState([]);
@@ -51,10 +52,15 @@ export default function Plans() {
 
 	return (
 		<Container>
-			<Contente>
+			<Content>
 				<header>
 					<h1>Gerenciando planos</h1>
-					<ButtonRegister />
+					<ButtonRegister
+						type="button"
+						onClick={() => {
+							history.push('/plans/register');
+						}}
+					/>
 				</header>
 
 				<PlanTable>
@@ -89,7 +95,7 @@ export default function Plans() {
 						))}
 					</tbody>
 				</PlanTable>
-			</Contente>
+			</Content>
 		</Container>
 	);
 }
