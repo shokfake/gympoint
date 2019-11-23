@@ -8,9 +8,10 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-	width: 900px;
+	width: 1380px;
 	display: flex;
 	flex-direction: column;
+	padding: 0 30px 0;
 
 	header {
 		display: flex;
@@ -26,9 +27,10 @@ export const Content = styled.div`
 	}
 `;
 
-export const PlanTable = styled.table`
+export const EnrollmentTable = styled.table`
 	width: 100%;
 	background: #fff;
+	border-radius: 4px;
 	padding: 30px 30px 0px 30px;
 
 	thead th {
@@ -38,22 +40,17 @@ export const PlanTable = styled.table`
 		padding-bottom: 20px;
 	}
 
-	tbody tr {
-		& + tr {
-			td {
-				padding-top: 15px;
-				border-top: 1px solid #eee;
-			}
-		}
-	}
-
 	td {
 		font-size: 16px;
-		color: #666;
 		padding-bottom: 15px;
+		color: #666;
 	}
 
 	th + th {
+		text-align: center;
+	}
+
+	td + td {
 		text-align: center;
 	}
 
@@ -64,10 +61,11 @@ export const PlanTable = styled.table`
 			a {
 				margin-right: 23px;
 				color: ${colors.info};
+				font-size: 15px;
 			}
 
 			button {
-				font-size: 16px;
+				font-size: 15px;
 				margin-right: 0;
 				background: none;
 				border: 0;
