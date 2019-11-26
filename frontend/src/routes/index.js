@@ -5,8 +5,10 @@ import Route from './Route';
 
 // Pages
 import SignIn from '~/pages/SignIn';
-import Enrollments from '~/pages/Enrollments';
 import HelpOrders from '~/pages/HelpOrders';
+
+import Enrollments from '~/pages/Enrollments';
+import EnrollmentsRegister from '~/pages/Enrollments/Register';
 
 import Plans from '~/pages/Plans';
 import PlansEdit from '~/pages/Plans/Edit';
@@ -29,7 +31,13 @@ export default function Routes() {
 			<Route path="/plans/edit/:id" component={PlansEdit} isPrivate />
 			<Route path="/plans/register" component={PlansRegister} isPrivate />
 
-			<Route path="/enrollments" component={Enrollments} isPrivate />
+			<Route path="/enrollments" exact component={Enrollments} isPrivate />
+			<Route
+				path="/enrollments/register"
+				component={EnrollmentsRegister}
+				isPrivate
+			/>
+
 			<Route path="/helpOrders" component={HelpOrders} isPrivate />
 		</Switch>
 	);
