@@ -9,6 +9,7 @@ import HelpOrders from '~/pages/HelpOrders';
 
 import Enrollments from '~/pages/Enrollments';
 import EnrollmentsRegister from '~/pages/Enrollments/Register';
+import EnrollmentsEdit from '~/pages/Enrollments/Edit';
 
 import Plans from '~/pages/Plans';
 import PlansEdit from '~/pages/Plans/Edit';
@@ -32,6 +33,12 @@ export default function Routes() {
 			<Route path="/plans/register" component={PlansRegister} isPrivate />
 
 			<Route path="/enrollments" exact component={Enrollments} isPrivate />
+			<Route
+				path="/enrollments/edit/:id"
+				exact
+				component={EnrollmentsEdit}
+				isPrivate
+			/>
 			<Route
 				path="/enrollments/register"
 				component={EnrollmentsRegister}

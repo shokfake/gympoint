@@ -91,7 +91,13 @@ export default function Enrollments() {
 								</td>
 								<td>
 									<div>
-										<Link to="/">editar</Link>
+										<Link
+											to={{
+												pathname: `/enrollments/edit/${enrollment.id}`,
+											}}
+										>
+											editar
+										</Link>
 										<button
 											type="button"
 											onClick={() => handleDelete(enrollment)}
